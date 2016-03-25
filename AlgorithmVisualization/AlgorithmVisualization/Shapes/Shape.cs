@@ -9,9 +9,33 @@ namespace AlgorithmVisualization.Shapes
 {
     abstract class Shape
     {
-        private Point Location; // Point sınıfından bir nesne tutuluyor. X ve Y kordinatlarını tutmak için.
-        private Brush Brush; // Brush tipini ve rengini tutmak için.
-        private Pen Pen; // Pen tipini ve rengini tutmak için.
+        // Point sınıfından bir nesne tutuluyor. X ve Y kordinatlarını tutmak için.
+        public Point Location { get; set; }
+
+        // Şeklin genişlik ve uzunluk değerlerini tutmak için.
+        public int Height { get; set; }
+        public int Width { get; set; }
+
+        // Şeklin rengini tutmak için.
+        public Color Color
+        {
+            get
+            {
+                return this.Color;
+            }
+            set
+            {
+                this.Color = value;
+                this.Pen = new Pen(value);
+                this.Brush = new SolidBrush(value);
+            }
+        }
+
+        // Brush tipini ve rengini tutmak için.
+        private Brush Brush;
+
+        // Pen tipini ve rengini tutmak için.
+        private Pen Pen;
 
         // Default constructor. İnput olarak kordinat alıyor. Pen için siyah, Brush için siyah bir solidbrush oluşturuluyor.
         public Shape(Point location) 
@@ -29,46 +53,7 @@ namespace AlgorithmVisualization.Shapes
             this.Pen = new Pen(color);
         }
 
-        // Kordinatları point sınıf şeklinde geri döndürüyor.
-        public Point GetLocation()
-        {
-            return this.Location;
-        }
-
-        //Yer değiştirme yapılacağı zaman yeni lokasyon atanır.
-        public void SetLocation(Point newLocation)
-        {
-            this.Location = newLocation;
-        }
-
-        // Objenin Brushını göndürüyor.
-        public Brush GetBrush()
-        {
-            return this.Brush;
-        }
-
-        // Objenin Brush ını, farklı tip veya renk ile değiştirmek için.
-        public void SetBrush(Brush newBrush)
-        {
-            this.Brush = newBrush;
-        }
-
-        //Objenin Penini döndürüyor.
-        public Pen GetPen()
-        {
-            return this.Pen;
-        }
-
-        //Objenin Penini, farklı tip veya renkte bir brush ile değiştirmek için.
-        public void SetPen(Pen newPen)
-        {
-            this.Pen = newPen;
-        }
-
         //Objenin ekrana çizdirilmesi. Her sınıf ayrı tanımlar. İnputların sonra değiştirilmesi gerekecek. (Graphics gelecek vs)
         public abstract void Draw();
-
-        //Objenin yer değiştirmesi için. Her sınıf ayrı işleyecek. İnputlar sonra değiştirilecek.
-        public abstract void Move();
     }
 }
