@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AlgorithmVisualization.Shapes;
 using System.Drawing;
+using AlgorithmVisualization.Algorithms;
 
 namespace AlgorithmVisualization
 {
@@ -39,6 +40,9 @@ namespace AlgorithmVisualization
 
         //Şekilleri üreten fabrika.
         ShapeFactory Factory { get; }
+
+        //Algoritmalar için strateji pattern.
+        public Algorithm Algorithm { get; set; }
 
         // Default constructor. Listeleri oluşturuyor. Default renk olarak siyah ve default şekil tipi olarak noktayı seçiyor.
         public ShapeContainer()
@@ -107,7 +111,7 @@ namespace AlgorithmVisualization
             }
             return null;//bulunamazsa null döndür.
         }
-
+        
         //bütün şekiller çizdiriliyor.
         public void DrawAll(Graphics g)
         {
@@ -116,6 +120,17 @@ namespace AlgorithmVisualization
             {
                 shape.Draw();
             }
+        }
+
+        //Verilen listeyi temizliyor. Ve genel listeden siliyor.
+        //hataya neden olabilir. ilerde değişecek.
+        public void ClearList(List<Shape> list)
+        {
+            foreach(Shape shape in list)
+            {
+                this.Shapes.Remove(shape);
+            }
+            list.Clear();
         }
     }
 }

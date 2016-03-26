@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AlgorithmVisualization.Shapes;
+using AlgorithmVisualization.Algorithms;
 
 namespace AlgorithmVisualization
 {
@@ -20,7 +21,7 @@ namespace AlgorithmVisualization
          * - Silme ve yer değiştirme işlemleri sonrası ekranın güncellenmesi işlemlerini yapmak.
          */
 
-        ShapeContainer Container;
+        ShapeContainer container;
         public Form1()
         {
             InitializeComponent();
@@ -32,14 +33,21 @@ namespace AlgorithmVisualization
             this.DoubleBuffered = true;
 
             //Shape container oluşturuluyor.
-            this.Container = new ShapeContainer();
+            this.container = new ShapeContainer();
+
+            //Algoritmalar combo box a yazdırılıyor.
+            this.selectAlgorithm.Items.Add("Kmeans");
+            this.selectAlgorithm.Items.Add("Nearest Neighbor Search");
+            this.selectAlgorithm.SelectedIndex = 0; //listedeki ilk algoritma seçiliyor.
+            this.AlgoSelect(this.selectAlgorithm.Text); //seçilen algoritmaya göre butonlar değiştiriliyor ve containerın
+            // stratejisi değiştiriliyor. Diğer algoritmadan kalan şekil varsa onlar siliniyor.
         }
 
         //invalidate ya da refresh de ekran temizlenip tekrar paint fonksiyonu çağırılıyor.
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             //bütün şekiller çizdiriliyor.
-            this.Container.DrawAll(e.Graphics);
+            this.container.DrawAll(e.Graphics);
         }
 
         private void Form1_MouseClick(object sender, MouseEventArgs e)
@@ -60,7 +68,7 @@ namespace AlgorithmVisualization
         //kadar node şekli oluşturmaya devam eder.
         private void drawNodeBtn_Click(object sender, EventArgs e)
         {
-            this.Container.CreationType = "Node";
+            this.container.CreationType = "Node";
         }
 
         // Seçilen şekli hem butonun arkaplanı olarak atar, hem de containerın CreationColor unu o renk yapar. Böylece
@@ -70,16 +78,66 @@ namespace AlgorithmVisualization
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 selectColorBtn.BackColor = colorDialog1.Color;
-                this.Container.CreationColor = colorDialog1.Color;
+                this.container.CreationColor = colorDialog1.Color;
             }
         }
 
-        // Kpoint butonuna basıldğında, Container'ın CreationType ını Kpoint olarak değiştirir. Böylece, tekrar değiştirilene
-        //kadar Kpoint şekli oluşturmaya devam eder.
-        // İLERDE BU FONKSİYON DEĞİŞECEK.
-        private void drawAlgoSpecificBtn_Click(object sender, EventArgs e)
+        //Seçilen algoritmanın ismine göre işlemleri uyguluyor. Gerekli butonlar enable ediliyor. Strateji değişiyor.
+        //önceki algoritmadan kalan şekiller siliniyor.
+        public void AlgoSelect(string algoName)
         {
-            this.Container.CreationType = "Kpoint";
+            if (algoName == "Kmeans")
+            {
+                this.container.Algorithm = new Kmeans();
+                this.drawKpointBtn.Enabled = true;
+                this.drawSelectedNBtn.Enabled = false;
+                this.container.ClearList(this.container.Vertices);
+                this.container.ClearList(this.container.SelectedNodes);
+                //burada ekran tekrar çizdirilecek.
+            }
+            else if (algoName == "Nearest Neighbor Search")
+            {
+                this.container.Algorithm = new NNS();
+                this.drawSelectedNBtn.Enabled = true;
+                this.drawKpointBtn.Enabled = false;
+                this.container.ClearList(this.container.Kpoints);
+                //burada ekran tekrar çizdirilecek.
+            }
+        }
+
+        //Algoritma seçimi değişirse AlgoSelect fonksiyonunu çağırıyor.
+        private void selectAlgorithm_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.AlgoSelect(this.selectAlgorithm.Text);
+        }
+
+        //K butonuna basıldığında container ın bundan sonra üreteceği şekli kpoint yapıyor.
+        private void drawKpointBtn_Click(object sender, EventArgs e)
+        {
+            this.container.CreationType = "Kpoint";
+        }
+
+        //N butonuna basıldığında container ın bundan sonra üreteceği şekli selected node yapıyor.
+        private void drawSelectedNBtn_Click(object sender, EventArgs e)
+        {
+            this.container.CreationType = "SelectedNode";
+        }
+
+        //Start butonuna basıldığında containerdaki algoritma başlatılıyor.
+        private void startBtn_Click(object sender, EventArgs e)
+        {
+            this.container.Algorithm.Start();
+        }
+
+        //Reset butonuna basıldığında ekranı sıfırlıyor.
+        private void resetBtn_Click(object sender, EventArgs e)
+        {
+            this.container.Shapes.Clear();
+            this.container.Nodes.Clear();
+            this.container.Kpoints.Clear();
+            this.container.SelectedNodes.Clear();
+            this.container.Vertices.Clear();
+            //burada ekran tekrar çizdirilecek.
         }
     }
 }

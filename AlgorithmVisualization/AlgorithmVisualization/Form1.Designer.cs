@@ -35,8 +35,9 @@
             this.drawNodeBtn = new System.Windows.Forms.ToolStripButton();
             this.selectColorBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.selectAlgorithmBtn = new System.Windows.Forms.ToolStripComboBox();
-            this.drawAlgoSpecificBtn = new System.Windows.Forms.ToolStripButton();
+            this.selectAlgorithm = new System.Windows.Forms.ToolStripComboBox();
+            this.drawKpointBtn = new System.Windows.Forms.ToolStripButton();
+            this.drawSelectedNBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.startBtn = new System.Windows.Forms.ToolStripButton();
             this.resetBtn = new System.Windows.Forms.ToolStripButton();
@@ -44,7 +45,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.logTxtBox = new System.Windows.Forms.RichTextBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -82,9 +82,9 @@
             this.drawNodeBtn,
             this.selectColorBtn,
             this.toolStripSeparator1,
-            this.selectAlgorithmBtn,
-            this.drawAlgoSpecificBtn,
-            this.toolStripButton1,
+            this.selectAlgorithm,
+            this.drawKpointBtn,
+            this.drawSelectedNBtn,
             this.toolStripSeparator2,
             this.startBtn,
             this.resetBtn});
@@ -119,20 +119,31 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // selectAlgorithmBtn
+            // selectAlgorithm
             // 
-            this.selectAlgorithmBtn.Name = "selectAlgorithmBtn";
-            this.selectAlgorithmBtn.Size = new System.Drawing.Size(121, 25);
+            this.selectAlgorithm.Name = "selectAlgorithm";
+            this.selectAlgorithm.Size = new System.Drawing.Size(121, 25);
+            this.selectAlgorithm.SelectedIndexChanged += new System.EventHandler(this.selectAlgorithm_SelectedIndexChanged);
             // 
-            // drawAlgoSpecificBtn
+            // drawKpointBtn
             // 
-            this.drawAlgoSpecificBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.drawAlgoSpecificBtn.Image = global::AlgorithmVisualization.Properties.Resources.typography;
-            this.drawAlgoSpecificBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.drawAlgoSpecificBtn.Name = "drawAlgoSpecificBtn";
-            this.drawAlgoSpecificBtn.Size = new System.Drawing.Size(23, 22);
-            this.drawAlgoSpecificBtn.Text = "Draw K Point";
-            this.drawAlgoSpecificBtn.Click += new System.EventHandler(this.drawAlgoSpecificBtn_Click);
+            this.drawKpointBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.drawKpointBtn.Image = global::AlgorithmVisualization.Properties.Resources.typography;
+            this.drawKpointBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.drawKpointBtn.Name = "drawKpointBtn";
+            this.drawKpointBtn.Size = new System.Drawing.Size(23, 22);
+            this.drawKpointBtn.Text = "Draw K Point";
+            this.drawKpointBtn.Click += new System.EventHandler(this.drawKpointBtn_Click);
+            // 
+            // drawSelectedNBtn
+            // 
+            this.drawSelectedNBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.drawSelectedNBtn.Image = global::AlgorithmVisualization.Properties.Resources.typography_1;
+            this.drawSelectedNBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.drawSelectedNBtn.Name = "drawSelectedNBtn";
+            this.drawSelectedNBtn.Size = new System.Drawing.Size(23, 22);
+            this.drawSelectedNBtn.Text = "Starting Node Select";
+            this.drawSelectedNBtn.Click += new System.EventHandler(this.drawSelectedNBtn_Click);
             // 
             // toolStripSeparator2
             // 
@@ -147,6 +158,7 @@
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(23, 22);
             this.startBtn.Text = "Start Algorithm";
+            this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
             // 
             // resetBtn
             // 
@@ -156,6 +168,7 @@
             this.resetBtn.Name = "resetBtn";
             this.resetBtn.Size = new System.Drawing.Size(23, 22);
             this.resetBtn.Text = "Reset";
+            this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
             // panel1
             // 
@@ -187,15 +200,6 @@
             this.logTxtBox.Size = new System.Drawing.Size(776, 112);
             this.logTxtBox.TabIndex = 0;
             this.logTxtBox.Text = "";
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::AlgorithmVisualization.Properties.Resources.typography_1;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "Starting Node Select";
             // 
             // Form1
             // 
@@ -231,8 +235,8 @@
         private System.Windows.Forms.ToolStripButton drawNodeBtn;
         private System.Windows.Forms.ToolStripButton selectColorBtn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripComboBox selectAlgorithmBtn;
-        private System.Windows.Forms.ToolStripButton drawAlgoSpecificBtn;
+        private System.Windows.Forms.ToolStripComboBox selectAlgorithm;
+        private System.Windows.Forms.ToolStripButton drawKpointBtn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton startBtn;
         private System.Windows.Forms.ToolStripButton resetBtn;
@@ -241,7 +245,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RichTextBox logTxtBox;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton drawSelectedNBtn;
     }
 }
 
