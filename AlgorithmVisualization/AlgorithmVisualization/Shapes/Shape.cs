@@ -11,6 +11,7 @@ namespace AlgorithmVisualization.Shapes
     {
         // Point sınıfından bir nesne tutuluyor. X ve Y kordinatlarını tutmak için.
         public Point Location { get; set; }
+        public Point SecondLocation { get; set; }
 
         // Şeklin genişlik ve uzunluk değerlerini tutmak için.
         public int Height { get; set; }
@@ -41,16 +42,22 @@ namespace AlgorithmVisualization.Shapes
         public Shape(Point location) 
         {
             this.Location = location;
-            this.Brush = new SolidBrush(Color.Black);
-            this.Pen = new Pen(Color.Black);
+            this.Color = Color.Black;
         }
 
         // İkinci constructor. Verilen kordinatlarda ve verilen renkteki pen ile brush a sahip bir shape oluşturuluyor.
         public Shape(Point point, Color color) 
         {
             this.Location = point;
-            this.Brush = new SolidBrush(color);
-            this.Pen = new Pen(color);
+            this.Color = color;
+        }
+
+        // Vertice için constructor.
+        public Shape(Point firstLoc, Point secondLoc, Color color)
+        {
+            this.Location = firstLoc;
+            this.SecondLocation = secondLoc;
+            this.Color = color;
         }
 
         //Objenin ekrana çizdirilmesi. Her sınıf ayrı tanımlar. İnputların sonra değiştirilmesi gerekecek. (Graphics gelecek vs)

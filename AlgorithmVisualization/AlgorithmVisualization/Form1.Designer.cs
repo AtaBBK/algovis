@@ -44,6 +44,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.logTxtBox = new System.Windows.Forms.RichTextBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -83,6 +84,7 @@
             this.toolStripSeparator1,
             this.selectAlgorithmBtn,
             this.drawAlgoSpecificBtn,
+            this.toolStripButton1,
             this.toolStripSeparator2,
             this.startBtn,
             this.resetBtn});
@@ -186,10 +188,20 @@
             this.logTxtBox.TabIndex = 0;
             this.logTxtBox.Text = "";
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::AlgorithmVisualization.Properties.Resources.typography_1;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "Starting Node Select";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(782, 420);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
@@ -229,6 +241,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RichTextBox logTxtBox;
         private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
 

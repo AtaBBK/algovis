@@ -28,6 +28,9 @@ namespace AlgorithmVisualization
         //Sadece SelectedNode ları tutan liste.
         public List<Shape> SelectedNodes { get; set; }
 
+        //Sadece vertice leri tutan liste.
+        public List<Shape> Vertices { get; set; }
+
         //Çizilmek istenen şekillerin ismini tutan string. Butonlarla değiştiriliyor.
         public string CreationType { get; set; }
 
@@ -44,6 +47,7 @@ namespace AlgorithmVisualization
             this.Nodes = new List<Shape>();
             this.Kpoints = new List<Shape>();
             this.SelectedNodes = new List<Shape>();
+            this.Vertices = new List<Shape>();
             this.CreationType = "Node";
             this.CreationColor = Color.Black;
             this.Factory = new ShapeFactory();

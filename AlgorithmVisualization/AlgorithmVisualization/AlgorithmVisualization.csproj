@@ -54,10 +54,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShapeContainer.cs" />
     <Compile Include="Shapes\Node.cs" />
     <Compile Include="Shapes\Kpoint.cs" />
     <Compile Include="Shapes\SelectedNode.cs" />
     <Compile Include="Shapes\Shape.cs" />
+    <Compile Include="Shapes\ShapeFactory.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
