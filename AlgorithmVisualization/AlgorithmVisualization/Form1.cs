@@ -22,6 +22,13 @@ namespace AlgorithmVisualization
          */
 
         ShapeContainer container;
+        string[] algorithmNames = new string[]
+        {
+            "Kmeans",
+            "Nearest Neighbor Search"
+        };
+        List<ToolStripButton> algoSpecificBtns;
+
         public Form1()
         {
             InitializeComponent();
@@ -35,14 +42,24 @@ namespace AlgorithmVisualization
             //Shape container oluşturuluyor.
             this.container = new ShapeContainer();
 
-            //Algoritmalar combo box a yazdırılıyor.
-            this.selectAlgorithm.Items.Add("Kmeans");
-            this.selectAlgorithm.Items.Add("Nearest Neighbor Search");
+            //Algoritma isimleri comboboxa yazdırılıyor.
+            foreach(string s in algorithmNames)
+            {
+                this.selectAlgorithm.Items.Add(s);
+            }
+            
+            //Butonlar enable işlemleri için bir listede tutuluyor.
+            this.algoSpecificBtns = new List<ToolStripButton>();
+            this.algoSpecificBtns.Add(this.kmeansBtn);
+            this.algoSpecificBtns.Add(this.nearestNeighborSearchBtn);
+            //Buraya daha sonra başka algoritmaların da butonları eklenecek.
+
             this.selectAlgorithm.SelectedIndex = 0; //listedeki ilk algoritma seçiliyor.
+
             this.AlgoSelect(this.selectAlgorithm.Text); //seçilen algoritmaya göre butonlar değiştiriliyor ve containerın
             // stratejisi değiştiriliyor. Diğer algoritmadan kalan şekil varsa onlar siliniyor.
         }
-
+        
         //invalidate ya da refresh de ekran temizlenip tekrar paint fonksiyonu çağırılıyor.
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
@@ -86,23 +103,27 @@ namespace AlgorithmVisualization
         //önceki algoritmadan kalan şekiller siliniyor.
         public void AlgoSelect(string algoName)
         {
-            if (algoName == "Kmeans")
+            //gönderilen stringden boşlukları siliyor ve lowercase e alıyor.
+            string temp = algoName.Replace(" ", "").ToLower(); // Örnek: Nearest Neighbor Search = nearestneighborsearch
+            foreach (ToolStripButton btn in this.algoSpecificBtns) // Bütün butonlar dolaşılıyor.
             {
-                this.container.Algorithm = new Kmeans();
-                this.drawKpointBtn.Enabled = true;
-                this.drawSelectedNBtn.Enabled = false;
-                this.container.ClearList(this.container.Vertices);
-                this.container.ClearList(this.container.SelectedNodes);
-                //burada ekran tekrar çizdirilecek.
+                if (btn.Name.ToLower().Equals(temp + "btn")) // buton ismi ile algoritma ismi uyuşursa enable ediyor.
+                {
+                    btn.Enabled = true;
+                }
+                else
+                {
+                    btn.Enabled = false; //diğerlerini enable = false ediyor.
+                }
             }
-            else if (algoName == "Nearest Neighbor Search")
-            {
-                this.container.Algorithm = new NNS();
-                this.drawSelectedNBtn.Enabled = true;
-                this.drawKpointBtn.Enabled = false;
-                this.container.ClearList(this.container.Kpoints);
-                //burada ekran tekrar çizdirilecek.
-            }
+
+            //Bu kısımda uygulanacak strateji belirleniyor. 
+            if (temp.Equals("kmeans")) this.container.Algorithm = new Kmeans();
+            else if (temp.Equals("nearestneighborsearch")) this.container.Algorithm = new NNS();
+
+            //son olarak önceki algoritmadan kalan şekiller siliniyor.
+            this.container.ClearAlgoLists();
+            //burda ekran tekrar çizdirilecek.
         }
 
         //Algoritma seçimi değişirse AlgoSelect fonksiyonunu çağırıyor.
@@ -131,7 +152,7 @@ namespace AlgorithmVisualization
 
         //Reset butonuna basıldığında ekranı sıfırlıyor.
         private void resetBtn_Click(object sender, EventArgs e)
-        {
+        {            
             this.container.Shapes.Clear();
             this.container.Nodes.Clear();
             this.container.Kpoints.Clear();

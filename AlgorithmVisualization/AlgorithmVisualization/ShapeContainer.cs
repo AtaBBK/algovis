@@ -123,14 +123,22 @@ namespace AlgorithmVisualization
         }
 
         //Verilen listeyi temizliyor. Ve genel listeden siliyor.
-        //hataya neden olabilir. ilerde değişecek.
-        public void ClearList(List<Shape> list)
+        //hataya neden olabilir. dikkat.
+        private void ClearAlgorithmList(List<Shape> list)
         {
             foreach(Shape shape in list)
             {
                 this.Shapes.Remove(shape);
             }
             list.Clear();
+        }
+
+        //Strateji değiştiği zaman bütün algoritma özel listeleri siliyor.
+        public void ClearAlgoLists()
+        {
+            ClearAlgorithmList(this.Kpoints);
+            ClearAlgorithmList(this.SelectedNodes);
+            ClearAlgorithmList(this.Vertices);
         }
     }
 }

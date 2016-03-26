@@ -28,16 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.drawNodeBtn = new System.Windows.Forms.ToolStripButton();
             this.selectColorBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.selectAlgorithm = new System.Windows.Forms.ToolStripComboBox();
-            this.drawKpointBtn = new System.Windows.Forms.ToolStripButton();
-            this.drawSelectedNBtn = new System.Windows.Forms.ToolStripButton();
+            this.kmeansBtn = new System.Windows.Forms.ToolStripButton();
+            this.nearestNeighborSearchBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.startBtn = new System.Windows.Forms.ToolStripButton();
             this.resetBtn = new System.Windows.Forms.ToolStripButton();
@@ -45,35 +42,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.logTxtBox = new System.Windows.Forms.RichTextBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.helpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(782, 24);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
             // 
             // toolStrip1
             // 
@@ -83,12 +55,12 @@
             this.selectColorBtn,
             this.toolStripSeparator1,
             this.selectAlgorithm,
-            this.drawKpointBtn,
-            this.drawSelectedNBtn,
+            this.kmeansBtn,
+            this.nearestNeighborSearchBtn,
             this.toolStripSeparator2,
             this.startBtn,
             this.resetBtn});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(782, 25);
             this.toolStrip1.TabIndex = 3;
@@ -125,25 +97,25 @@
             this.selectAlgorithm.Size = new System.Drawing.Size(121, 25);
             this.selectAlgorithm.SelectedIndexChanged += new System.EventHandler(this.selectAlgorithm_SelectedIndexChanged);
             // 
-            // drawKpointBtn
+            // kmeansBtn
             // 
-            this.drawKpointBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.drawKpointBtn.Image = global::AlgorithmVisualization.Properties.Resources.typography;
-            this.drawKpointBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.drawKpointBtn.Name = "drawKpointBtn";
-            this.drawKpointBtn.Size = new System.Drawing.Size(23, 22);
-            this.drawKpointBtn.Text = "Draw K Point";
-            this.drawKpointBtn.Click += new System.EventHandler(this.drawKpointBtn_Click);
+            this.kmeansBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.kmeansBtn.Image = global::AlgorithmVisualization.Properties.Resources.typography;
+            this.kmeansBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.kmeansBtn.Name = "kmeansBtn";
+            this.kmeansBtn.Size = new System.Drawing.Size(23, 22);
+            this.kmeansBtn.Text = "Draw K Point";
+            this.kmeansBtn.Click += new System.EventHandler(this.drawKpointBtn_Click);
             // 
-            // drawSelectedNBtn
+            // nearestNeighborSearchBtn
             // 
-            this.drawSelectedNBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.drawSelectedNBtn.Image = global::AlgorithmVisualization.Properties.Resources.typography_1;
-            this.drawSelectedNBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.drawSelectedNBtn.Name = "drawSelectedNBtn";
-            this.drawSelectedNBtn.Size = new System.Drawing.Size(23, 22);
-            this.drawSelectedNBtn.Text = "Starting Node Select";
-            this.drawSelectedNBtn.Click += new System.EventHandler(this.drawSelectedNBtn_Click);
+            this.nearestNeighborSearchBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.nearestNeighborSearchBtn.Image = global::AlgorithmVisualization.Properties.Resources.typography_1;
+            this.nearestNeighborSearchBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.nearestNeighborSearchBtn.Name = "nearestNeighborSearchBtn";
+            this.nearestNeighborSearchBtn.Size = new System.Drawing.Size(23, 22);
+            this.nearestNeighborSearchBtn.Text = "Starting Node Select";
+            this.nearestNeighborSearchBtn.Click += new System.EventHandler(this.drawSelectedNBtn_Click);
             // 
             // toolStripSeparator2
             // 
@@ -209,15 +181,11 @@
             this.ClientSize = new System.Drawing.Size(782, 420);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -228,24 +196,20 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton drawNodeBtn;
         private System.Windows.Forms.ToolStripButton selectColorBtn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripComboBox selectAlgorithm;
-        private System.Windows.Forms.ToolStripButton drawKpointBtn;
+        private System.Windows.Forms.ToolStripButton kmeansBtn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton startBtn;
         private System.Windows.Forms.ToolStripButton resetBtn;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RichTextBox logTxtBox;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.ToolStripButton drawSelectedNBtn;
+        private System.Windows.Forms.ToolStripButton nearestNeighborSearchBtn;
     }
 }
 
