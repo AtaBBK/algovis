@@ -154,5 +154,28 @@ namespace AlgorithmVisualization
                 this.Algorithm.Start(this.Shapes, this.Nodes, this.SelectedNodes);
             }
         }
+
+        public void ChangeLocOfShape(Shape shape, Point newLocation)
+        {
+            if(shape!=null)
+            {
+                
+                if(shape.GetType().Name.ToLower()=="node")
+                {
+                    this.Nodes[this.Nodes.IndexOf(shape)].Location = newLocation;
+                }
+                if (shape.GetType().Name.ToLower() == "selectednode")
+                {
+                    this.SelectedNodes[this.SelectedNodes.IndexOf(shape)].Location = newLocation;
+                }
+                if (shape.GetType().Name.ToLower() == "kpoint")
+                {
+                    this.Kpoints[this.Kpoints.IndexOf(shape)].Location = newLocation;
+                }
+                this.Shapes[this.Shapes.IndexOf(shape)].Location = newLocation;
+            }
+
+           
+        }
     }
 }

@@ -23,6 +23,7 @@ namespace AlgorithmVisualization
          */
 
         ShapeContainer container;
+        Shape activeshape=null;
         string[] algorithmNames = new string[]
         {
             "Kmeans",
@@ -75,18 +76,21 @@ namespace AlgorithmVisualization
 
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
-            if(e.Button == System.Windows.Forms.MouseButtons.Left)
+            if (activeshape == null)
             {
-                // sol tıklanırsa şekil çizdirilecek.
-                container.CreateShape(e.Location);
-                Invalidate();
-            }
-            else if(e.Button == System.Windows.Forms.MouseButtons.Right)
-            {
-                // sağ tıklanırsa şekil silinecek.
-                container.DeleteShape(container.FindShape(e.Location));
-                Invalidate();
+                if (e.Button == System.Windows.Forms.MouseButtons.Left)
+                {
+                    // sol tıklanırsa şekil çizdirilecek.
+                    container.CreateShape(e.Location);
+                    Invalidate();
+                }
+                else if (e.Button == System.Windows.Forms.MouseButtons.Right)
+                {
+                    // sağ tıklanırsa şekil silinecek.
+                    container.DeleteShape(container.FindShape(e.Location));
+                    Invalidate();
 
+                }
             }
         }
 
@@ -161,30 +165,32 @@ namespace AlgorithmVisualization
         }
 
        
-        protected override void OnMouseDown(MouseEventArgs e)
+      protected override void OnMouseDown(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                if (container.FindShape(e.Location) != null)
+                if (activeshape == null)
                 {
-  
-                    container.DeleteShape(container.FindShape(e.Location));
-                    
-                    Invalidate();
+                    if (container.FindShape(e.Location) != null)
+                    {
+                        this.activeshape = container.FindShape(e.Location);
+                    }
                 }
-
-                 
             }
         }
-     /*  protected override void OnMouseMove(MouseEventArgs e)
+
+      
+        protected override void OnMouseMove(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                container.CreateShape(e.Location);
-                this.Invalidate();
+                if (activeshape!= null)
+                {
+                    this.container.ChangeLocOfShape(activeshape, e.Location);
+                    this.Invalidate();
+                }
             }
-        }*/
-
+        }
         
         //Reset butonuna basıldığında ekranı sıfırlıyor.
         private void resetBtn_Click(object sender, EventArgs e)
@@ -197,6 +203,17 @@ namespace AlgorithmVisualization
             Logger.Clear();
             Invalidate();
             //burada ekran tekrar çizdirilecek.
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if(e.Button==MouseButtons.Left)
+            {
+                if (activeshape != null)
+                {
+                    activeshape = null;
+                }
+            }
         }
     }
 }
