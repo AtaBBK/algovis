@@ -42,6 +42,8 @@ namespace AlgorithmVisualization
             //Shape container oluşturuluyor.
             this.container = new ShapeContainer();
 
+            //Animasyon işleminde ınvalidate i global olarak çağırmak için form atanıyor.
+            Logger.SetFormToInvalidate(this);
             //Log tutmak için log text box atanıyor.
             Logger.SetLogContainer(this.logTxtBox);
 
@@ -154,6 +156,7 @@ namespace AlgorithmVisualization
         private void startBtn_Click(object sender, EventArgs e)
         {
             this.container.StartAlgorithm();
+            Invalidate();
         }
 
         //Reset butonuna basıldığında ekranı sıfırlıyor.
@@ -165,6 +168,7 @@ namespace AlgorithmVisualization
             this.container.SelectedNodes.Clear();
             this.container.Vertices.Clear();
             Logger.Clear();
+            Invalidate();
             //burada ekran tekrar çizdirilecek.
         }
     }

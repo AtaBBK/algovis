@@ -65,9 +65,10 @@ namespace AlgorithmVisualization.Algorithms
                 Logger.Log("Changed color of the node. Location : X = " + node.Location.X.ToString() +
                     ", Y = " + node.Location.Y.ToString() + 
                     " Old Color = " + node.Color.ToString() + 
-                    " New Color = " + color + ".");
+                    " New Color = " + color.ToString() + ".");
                 Shapes[Shapes.IndexOf(node)].Color = color;
                 Nodes[Nodes.IndexOf(node)].Color = color;
+                Logger.Animate();
             }
         }
 
@@ -105,6 +106,7 @@ namespace AlgorithmVisualization.Algorithms
                     ", Y = " + newLocation.Y.ToString() + ".");
                 Shapes[Shapes.IndexOf(kpoint)].Location = newLocation;
                 Kpoints[Kpoints.IndexOf(kpoint)].Location = newLocation;
+                Logger.Animate();
             }
         }
 

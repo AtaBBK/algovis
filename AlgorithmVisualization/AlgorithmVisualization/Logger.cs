@@ -11,6 +11,7 @@ namespace AlgorithmVisualization
     {
         private static Logger instance;
         private static RichTextBox logContainer;
+        private static Form formInvalidate;
         private Logger() { }
 
         public static Logger Instance
@@ -20,7 +21,10 @@ namespace AlgorithmVisualization
                 return instance;
             }
         }
-
+        public static void SetFormToInvalidate(Form form)
+        {
+            formInvalidate = form;
+        }
         public static void SetLogContainer(RichTextBox container)
         {
             logContainer = container;
@@ -37,6 +41,11 @@ namespace AlgorithmVisualization
         public static void Clear()
         {
             if (logContainer != null) logContainer.Clear();
+        }
+
+        public static void Animate()
+        {
+            formInvalidate.Invalidate();
         }
     }
 }
