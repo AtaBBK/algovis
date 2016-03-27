@@ -43,6 +43,10 @@ namespace AlgorithmVisualization.Shapes
         {
             this.Location = location;
             this.Color = Color.Black;
+            Logger.Log(this.GetType().Name + " created." +
+                        "Location : X = " + this.Location.X.ToString() + 
+                        ", Y = " + this.Location.Y.ToString() + 
+                        " Color : " + this.Color.ToString() + ".");
         }
 
         // İkinci constructor. Verilen kordinatlarda ve verilen renkteki pen ile brush a sahip bir shape oluşturuluyor.
@@ -50,6 +54,10 @@ namespace AlgorithmVisualization.Shapes
         {
             this.Location = point;
             this.Color = color;
+            Logger.Log(this.GetType().Name + " created." +
+                        "Location : X = " + this.Location.X.ToString() +
+                        ", Y = " + this.Location.Y.ToString() +
+                        " Color : " + this.Color.ToString() + ".");
         }
 
         // Vertice için constructor.
@@ -58,6 +66,12 @@ namespace AlgorithmVisualization.Shapes
             this.Location = firstLoc;
             this.SecondLocation = secondLoc;
             this.Color = color;
+            Logger.Log(this.GetType().Name + " created." +
+                        "Location : Between X = " + this.Location.X.ToString() +
+                        ", Y = " + this.Location.Y.ToString() + " and " +
+                        "X = " + this.SecondLocation.X.ToString() + 
+                        ", Y = " + this.SecondLocation.Y.ToString() + 
+                        " Color : " + this.Color.ToString() + ".");
         }
 
         //Objenin ekrana çizdirilmesi. Her sınıf ayrı tanımlar. İnputların sonra değiştirilmesi gerekecek. (Graphics gelecek vs)

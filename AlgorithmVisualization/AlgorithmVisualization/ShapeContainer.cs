@@ -89,6 +89,10 @@ namespace AlgorithmVisualization
                     this.SelectedNodes.Remove(shape);
 
                 this.Shapes.Remove(shape); // genel listeden siliyor.
+                Logger.Log(shape.GetType().Name + " deleted." +
+                            " Location : X = " + shape.Location.X.ToString() + 
+                            ", Y = " + shape.Location.Y.ToString() + 
+                            " Color : " + shape.Color.ToString() + ".");
             }
         }
 
@@ -139,6 +143,18 @@ namespace AlgorithmVisualization
             ClearAlgorithmList(this.Kpoints);
             ClearAlgorithmList(this.SelectedNodes);
             ClearAlgorithmList(this.Vertices);
+        }
+
+        public void StartAlgorithm()
+        {
+            if(this.Algorithm.GetType().Name == "Kmeans")
+            {
+                this.Algorithm.Start(this.Shapes, this.Nodes, this.Kpoints);
+            }
+            else if(this.Algorithm.GetType().Name == "NNS")
+            {
+                this.Algorithm.Start(this.Shapes, this.Nodes, this.SelectedNodes);
+            }
         }
     }
 }

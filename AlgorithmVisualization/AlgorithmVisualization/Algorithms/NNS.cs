@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AlgorithmVisualization.Shapes;
 
 namespace AlgorithmVisualization.Algorithms
 {
     class NNS : Algorithm
     {
-        public void Start()
+        public void Start(List<Shape> Shapes, List<Shape> Nodes, List<Shape> AlgoSpecific)
         {
             throw new NotImplementedException();
         }

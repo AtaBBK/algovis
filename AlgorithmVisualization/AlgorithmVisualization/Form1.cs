@@ -42,6 +42,9 @@ namespace AlgorithmVisualization
             //Shape container oluşturuluyor.
             this.container = new ShapeContainer();
 
+            //Log tutmak için log text box atanıyor.
+            Logger.SetLogContainer(this.logTxtBox);
+
             //Algoritma isimleri comboboxa yazdırılıyor.
             foreach(string s in algorithmNames)
             {
@@ -147,7 +150,7 @@ namespace AlgorithmVisualization
         //Start butonuna basıldığında containerdaki algoritma başlatılıyor.
         private void startBtn_Click(object sender, EventArgs e)
         {
-            this.container.Algorithm.Start();
+            this.container.StartAlgorithm();
         }
 
         //Reset butonuna basıldığında ekranı sıfırlıyor.
@@ -158,6 +161,7 @@ namespace AlgorithmVisualization
             this.container.Kpoints.Clear();
             this.container.SelectedNodes.Clear();
             this.container.Vertices.Clear();
+            Logger.Clear();
             //burada ekran tekrar çizdirilecek.
         }
     }
