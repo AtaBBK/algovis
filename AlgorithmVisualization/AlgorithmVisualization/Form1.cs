@@ -76,11 +76,14 @@ namespace AlgorithmVisualization
             {
                 // sol tıklanırsa şekil çizdirilecek.
                 container.CreateShape(e.Location);
+                Invalidate();
             }
             else if(e.Button == System.Windows.Forms.MouseButtons.Right)
             {
                 // sağ tıklanırsa şekil silinecek.
-               // container.DeleteShape();
+                container.DeleteShape(container.FindShape(e.Location));
+                Invalidate();
+
             }
         }
 

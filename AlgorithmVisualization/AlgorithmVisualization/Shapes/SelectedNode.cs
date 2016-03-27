@@ -9,25 +9,20 @@ namespace AlgorithmVisualization.Shapes
 {
     class SelectedNode : Shape
     {
-        /* AMACI : Nearest Node Search algoritmasında seçilen node'un çevresine pen ile daha geniş bir daire çizilmesi.
-         * YAPILMASI GEREKENLER : 
-         * - Width(x) ve Height(y) değerlerinin constructor'larda tanımlanması.
-         * - Şeklin çizdirilme metodunun yazılması.
-         */
-
-        // Default constructor implement ediliyor. (Javadaki super gibi)
+        // AMACI : Nearest Node Search algoritmasında seçilen node'un çevresine pen ile daha geniş bir daire çizilmesi.
+        
         public SelectedNode(Point location) : base(location)
         {
             this.Height = location.Y;
             this.Width = location.X;
         }
 
-        // İkinci constructor implement ediliyor. (Javadaki super gibi)
+     
         public SelectedNode(Point location, Color color) : base(location, color)
         {
             this.Height = location.Y;
             this.Width = location.X;
-            this.Color = color;
+            
         }
 
         public override void Draw(Graphics graphics)

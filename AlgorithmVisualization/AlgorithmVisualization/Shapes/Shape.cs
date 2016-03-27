@@ -17,16 +17,18 @@ namespace AlgorithmVisualization.Shapes
         public int Height { get; set; }
         public int Width { get; set; }
 
+
+        private Color _color;
         // Şeklin rengini tutmak için.
         public Color Color
         {
             get
             {
-                return this.Color;
+                return this._color;
             }
             set
             {
-                this.Color = value;
+                this._color = value;
                 this.Pen = new Pen(value);
                 this.Brush = new SolidBrush(value);
             }
@@ -73,6 +75,8 @@ namespace AlgorithmVisualization.Shapes
                         ", Y = " + this.SecondLocation.Y.ToString() + 
                         " Color : " + this.Color.ToString() + ".");
         }
+
+        //Objenin ekrana çizdirilmesi. Her sınıf ayrı tanımlar. İnputların sonra değiştirilmesi gerekecek. (Graphics gelecek vs)
         public abstract void Draw(Graphics graphics);
     }
 }

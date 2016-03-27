@@ -12,7 +12,6 @@ namespace AlgorithmVisualization
     class ShapeContainer
     {
         /* YAPILMASI GEREKENLER:
-         *  - DrawAll fonksiyonu için gerekli input değerleri yazılması gerekiyor.
          *  - Gerekli input değerleri yazıldıktan sonra bütün şekiller için draw fonksiyonuna gereken parametreler gönderilmeli.
          */
 
@@ -119,7 +118,6 @@ namespace AlgorithmVisualization
         //bütün şekiller çizdiriliyor.
         public void DrawAll(Graphics g)
         {
-            //bu fonksiyon için gereken input parametrelerini ekleyin.
             foreach(Shape shape in Shapes)
             {
                 shape.Draw(g);

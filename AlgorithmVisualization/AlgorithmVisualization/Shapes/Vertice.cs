@@ -9,18 +9,17 @@ namespace AlgorithmVisualization.Shapes
 {
     class Vertice : Shape
     {
-        /* AMACI : NNS algoritmasında seçilen node lar arasına bir çizgi çizmek.
-         * YAPILMASI GEREKENLER :
-         * - Draw Fonksiyonunu implement etmek.
-         */
+        // AMACI : NNS algoritmasında seçilen node lar arasına bir çizgi çizmek.
+        
+        public Vertice(Point firstLoc, Point secondLoc, Color color) : base(firstLoc, secondLoc, color) {
+            this.Location = firstLoc;
+            this.SecondLocation = secondLoc;
+            this.Color = color;
+        }
 
-        //Vertice için constructor.
-        public Vertice(Point firstLoc, Point secondLoc, Color color) : base(firstLoc, secondLoc, color) { }
-
-        //Bu fonksiyon yazılacak.
-        public override void Draw(Graphics graphic)
+        public override void Draw(Graphics graphics)
         {
-            graphic.DrawLine(Pen, this.Location, this.SecondLocation);
+            graphics.DrawLine(Pen, this.Location, this.SecondLocation);
         }
     }
 }
