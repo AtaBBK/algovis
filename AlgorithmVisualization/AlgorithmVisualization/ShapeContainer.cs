@@ -122,7 +122,7 @@ namespace AlgorithmVisualization
             //bu fonksiyon için gereken input parametrelerini ekleyin.
             foreach(Shape shape in Shapes)
             {
-                shape.Draw();
+                shape.Draw(g);
             }
         }
 

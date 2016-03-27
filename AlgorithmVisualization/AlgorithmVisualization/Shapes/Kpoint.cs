@@ -17,23 +17,25 @@ namespace AlgorithmVisualization.Shapes
         // Default constructor implement ediliyor. (Javadaki super gibi)
         public Kpoint(Point location) : base(location)
         {
-            //burada şeklin uzunluk ve genişlik değerleri tanımlanacak. (Dikdörtgensel şekil olarak düşünüldüğü için)
-            //this.Height = 5 gibi bi atama işlemi gerekiyor.
+            this.Height = location.Y;
+            this.Width = location.X;
         }
 
         // İkinci constructor implement ediliyor. (Javadaki super gibi)
         public Kpoint(Point location, Color color) : base(location, color)
         {
-            //burada şeklin uzunluk ve genişlik değerleri tanımlanacak. (Dikdörtgensel şekil olarak düşünüldüğü için)
-            //this.Height = 5 gibi bi atama işlemi gerekiyor.
+            this.Height = location.Y;
+            this.Width = location.X;
+            this.Color = color;
         }
 
-        public override void Draw()
+        public override void Draw(Graphics graphics)
         {
-            //burada çizdirme işlemi bu şekle özel olarak yazılacak. 
-            // height ve width değerlerini kullanın.
-            // -height/2 ve -width/2 olayını unutmayın. (tam tıklanan yeri merkez alması için.)
-            throw new NotImplementedException();
+
+            Font myFont = new Font("Arial", 10, FontStyle.Bold);
+            string cat = "X";
+            graphics.DrawString(cat, myFont, Brush, this.Location);
+
         }
     }
 }

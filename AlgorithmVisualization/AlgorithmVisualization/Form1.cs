@@ -75,12 +75,12 @@ namespace AlgorithmVisualization
             if(e.Button == System.Windows.Forms.MouseButtons.Left)
             {
                 // sol tıklanırsa şekil çizdirilecek.
-                //Container ın create shape metodunu kullanın.
+                container.CreateShape(e.Location);
             }
             else if(e.Button == System.Windows.Forms.MouseButtons.Right)
             {
                 // sağ tıklanırsa şekil silinecek.
-                // Containerın delete shape metodunu kullanıdıktan sonra ekrana tekrar çizdirilme işlemi yapılacak.
+               // container.DeleteShape();
             }
         }
 

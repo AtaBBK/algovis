@@ -18,9 +18,9 @@ namespace AlgorithmVisualization.Shapes
         public Vertice(Point firstLoc, Point secondLoc, Color color) : base(firstLoc, secondLoc, color) { }
 
         //Bu fonksiyon yazılacak.
-        public override void Draw()
+        public override void Draw(Graphics graphic)
         {
-            throw new NotImplementedException();
+            graphic.DrawLine(Pen, this.Location, this.SecondLocation);
         }
     }
 }

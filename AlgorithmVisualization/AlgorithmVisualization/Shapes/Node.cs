@@ -15,26 +15,24 @@ namespace AlgorithmVisualization.Shapes
          * - Şeklin çizdirilme metodunun yazılması.
          */
 
-        // Default constructor implement ediliyor. (Javadaki super gibi)
+        // Default constructor implement ediliyor. 
         public Node(Point location) : base(location)
         {
-            //burada şeklin uzunluk ve genişlik değerleri tanımlanacak. (Dikdörtgensel şekil olarak düşünüldüğü için)
-            //this.Height = 5 gibi bi atama işlemi gerekiyor.
+            this.Height = location.X;
+            this.Width = location.Y;
         }
 
-        // İkinci constructor implement ediliyor. (Javadaki super gibi)
+        // İkinci constructor implement ediliyor. 
         public Node(Point location, Color color) : base(location, color)
         {
-            //burada şeklin uzunluk ve genişlik değerleri tanımlanacak. (Dikdörtgensel şekil olarak düşünüldüğü için)
-            //this.Height = 5 gibi bi atama işlemi gerekiyor.
+            this.Height = location.X;
+            this.Width = location.Y;
+            this.Color = color;
         }
 
-        public override void Draw()
+        public override void Draw(Graphics graphics)
         {
-            //burada çizdirme işlemi bu şekle özel olarak yazılacak. 
-            // height ve width değerlerini kullanın.
-            // -height/2 ve -width/2 olayını unutmayın. (tam tıklanan yeri merkez alması için.)
-            throw new NotImplementedException();
+            graphics.FillEllipse(Brush, new Rectangle(this.Location.X - 5, this.Location.Y - 5, 10, 10));
         }
     }
 }

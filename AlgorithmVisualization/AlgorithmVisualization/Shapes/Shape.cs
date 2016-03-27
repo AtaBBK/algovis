@@ -33,10 +33,10 @@ namespace AlgorithmVisualization.Shapes
         }
 
         // Brush tipini ve rengini tutmak için.
-        private Brush Brush;
+        public Brush Brush;
 
         // Pen tipini ve rengini tutmak için.
-        private Pen Pen;
+        public Pen Pen;
 
         // Default constructor. İnput olarak kordinat alıyor. Pen için siyah, Brush için siyah bir solidbrush oluşturuluyor.
         public Shape(Point location) 
@@ -73,8 +73,6 @@ namespace AlgorithmVisualization.Shapes
                         ", Y = " + this.SecondLocation.Y.ToString() + 
                         " Color : " + this.Color.ToString() + ".");
         }
-
-        //Objenin ekrana çizdirilmesi. Her sınıf ayrı tanımlar. İnputların sonra değiştirilmesi gerekecek. (Graphics gelecek vs)
-        public abstract void Draw();
+        public abstract void Draw(Graphics graphics);
     }
 }
