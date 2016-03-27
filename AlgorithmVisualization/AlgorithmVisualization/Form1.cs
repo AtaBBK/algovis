@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using AlgorithmVisualization.Shapes;
 using AlgorithmVisualization.Algorithms;
 
+
 namespace AlgorithmVisualization
 {
     public partial class Form1 : Form
@@ -159,6 +160,32 @@ namespace AlgorithmVisualization
             Invalidate();
         }
 
+       
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (container.FindShape(e.Location) != null)
+                {
+  
+                    container.DeleteShape(container.FindShape(e.Location));
+                    
+                    Invalidate();
+                }
+
+                 
+            }
+        }
+     /*  protected override void OnMouseMove(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                container.CreateShape(e.Location);
+                this.Invalidate();
+            }
+        }*/
+
+        
         //Reset butonuna basıldığında ekranı sıfırlıyor.
         private void resetBtn_Click(object sender, EventArgs e)
         {            

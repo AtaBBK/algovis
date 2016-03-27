@@ -1,4 +1,7 @@
-﻿namespace AlgorithmVisualization
+﻿using System;
+using System.Windows.Forms;
+
+namespace AlgorithmVisualization
 {
     partial class Form1
     {
@@ -186,6 +189,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -193,6 +197,14 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if(container.FindShape(e.Location)!=null)
+            {
+
+            }
         }
 
         #endregion

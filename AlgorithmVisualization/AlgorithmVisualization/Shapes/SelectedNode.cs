@@ -13,8 +13,8 @@ namespace AlgorithmVisualization.Shapes
         
         public SelectedNode(Point location) : base(location)
         {
-            this.Height = location.Y;
-            this.Width = location.X;
+            //this.Height = location.Y; değişecek
+           // this.Width = location.X;  değişecek
         }
 
      
