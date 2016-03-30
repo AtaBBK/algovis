@@ -68,7 +68,10 @@ namespace AlgorithmVisualization
                 else if (this.CreationType.Equals("KPOINT", StringComparison.OrdinalIgnoreCase))
                     this.Kpoints.Add(shape); //eğer şekil k noktası ise k noktalar listesine ekleniyor.
                 else if (this.CreationType.Equals("SELECTEDNODE", StringComparison.OrdinalIgnoreCase))
+                {
                     this.SelectedNodes.Add(shape); //eğer şekil selected node ise o listeye ekleniyor.
+                }
+                   
 
                 return shape;
             }
